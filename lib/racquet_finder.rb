@@ -1,4 +1,7 @@
 
+require 'open-uir'
+require 'nokogiri'
+
 require "racquet_finder/version"
 
 module RacquetFinder
