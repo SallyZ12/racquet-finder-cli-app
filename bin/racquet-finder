@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative :./lib/racquet_finder
+
+RacquetFinder::CLI.new.call
