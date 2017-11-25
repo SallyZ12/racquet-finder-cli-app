@@ -2,7 +2,7 @@ class RacquetFinder::CLI
 
 
   def call
-    list_racquet_brands
+    # list_racquet_brands
     list_racquet_models
   end
 
@@ -12,11 +12,11 @@ class RacquetFinder::CLI
   end
 
   def list_racquet_models
-    input = nil
-    while input != exit
+    # input = nil
+    # while input != exit
 
     puts "1. Head Radical Pro, 2. Head Radical Touch, 3. Head Radical MPA"
     end
-  end
+  # end
 
 end
