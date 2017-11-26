@@ -1,6 +1,7 @@
 
 require 'open-uri'
 require 'nokogiri'
+require 'pry'
 
 
 require "racquet_finder/version"
