@@ -14,7 +14,7 @@ class RacquetFinder::CLI
   def scrape_racquet_model
     doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
     models = doc.css("div.lefthand-nav li").first.text.split("Head")
-    model_array = models.join.gsub("Head", "").split
+    model_array = models.join.gsub("Racquets", "").split
     binding.pry
   end
 
