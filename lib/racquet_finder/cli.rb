@@ -14,12 +14,12 @@ class RacquetFinder::CLI
   def scrape_racquet_model
     doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
     models = doc.css("div.lefthand-nav li").first.text.split("Head")
-    model_array = models.join.gsub("Racquets", "").split
+    model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Graphene","").split
 
     puts "Select a Tennis Racquet Model"
 
-    test = model_array[2..6].each.with_index(1) do |model, i|
-      puts "#{i}. #{model}"
+    model_array[1..6].each.with_index(1) do |model, i|
+       puts "#{i}. #{model}"
     end
   end
 
