@@ -1,15 +1,16 @@
 class RacquetFinder::CLI
 
   #testing scraper in CLI
-  # def scrape_racquet_brands
-  #   doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
-  #   brands = doc.css("div.lefthand-nav li").first.text.split("racquets")
-  #   brand_array = brands.join.gsub("Racquets", "").split
-  #   puts "Tennis Brands To Choose From:"
-  #   brand_array[1..3].each.with_index(1) do |brand, i|
-  #     puts "#{i}. #{brand}"
-  #   end
-  # end
+  def scrape_racquet_brands
+    doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
+    brands = doc.css("div.lefthand-nav li").first.text.split("racquets")
+    brand_array = brands.join.gsub("Racquets", "").split
+    
+    puts "Tennis Brands To Choose From:"
+    brand_array[1..3].each.with_index(1) do |brand, i|
+      puts "#{i}. #{brand}"
+    end
+  end
 
   # def scrape_head_racquets
   #   doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
@@ -41,7 +42,7 @@ class RacquetFinder::CLI
   #     models = doc.css("div.lefthand-nav li").first.text.split("Wilson")
   #
   #     model_array = models.join.gsub("Racquets", "").gsub("Tennis","").split
-  #     # binding.pry
+  #     binding.pry
   #     puts "Select a Wilson Racquet Model"
   #
   #     model_array[0..7].each.with_index(1) do |model, i|
