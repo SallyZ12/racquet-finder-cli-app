@@ -35,16 +35,16 @@ class RacquetFinder::CLI
   #        end
   #   end
 
-
+  # in process
   def scrape_wilson_racquet
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
       models = doc.css("div.lefthand-nav li").first.text.split("Wilson")
 
       model_array = models.join.gsub("Racquets", "").gsub("Tennis","").split
-      binding.pry
+      # binding.pry
       puts "Select a Wilson Racquet Model"
 
-      model_array[0..5].each.with_index(1) do |model, i|
+      model_array[0..7].each.with_index(1) do |model, i|
            puts "#{i}. #{model}"
          end
     end
