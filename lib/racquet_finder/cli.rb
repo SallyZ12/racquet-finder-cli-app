@@ -1,7 +1,7 @@
 class RacquetFinder::CLI
 
   #testing scraper in CLI
-  # def scrape_brand
+  # def scrape_racquet_brand
   #   doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
   #   brands = doc.css("div.lefthand-nav li").first.text.split("racquets")
   #   brand_array = brands.join.gsub("Racquets", "").split
@@ -11,8 +11,13 @@ class RacquetFinder::CLI
   #   end
   # end
 
-  def scrape_model
-    
+  def scrape_racquet_model
+    doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
+    models = doc.css("div.lefthand-nav li").first.text.split("Head")
+    model_array = models.join.gsub("Head", "").split
+    binding.pry
+  end
+
 
 
 
