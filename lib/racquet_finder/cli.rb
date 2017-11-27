@@ -52,7 +52,8 @@ class RacquetFinder::CLI
   #in process
   def scrape_head_racquet_types
     doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
-    types = doc.css("div.subcatContent li a img").first
+    # types = doc.css("div.subcatContent li a img").first
+      types = doc.css("div.subcatContent h3 a").first
     binding.pry
   end
 
