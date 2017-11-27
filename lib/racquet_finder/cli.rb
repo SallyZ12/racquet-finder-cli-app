@@ -1,7 +1,7 @@
 class RacquetFinder::CLI
 
   #testing scraper in CLI
-  # def scrape_racquet_brand
+  # def scrape_racquet_brands
   #   doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
   #   brands = doc.css("div.lefthand-nav li").first.text.split("racquets")
   #   brand_array = brands.join.gsub("Racquets", "").split
@@ -11,7 +11,7 @@ class RacquetFinder::CLI
   #   end
   # end
 
-  # def scrape_head_racquet
+  # def scrape_head_racquets
   #   doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
   #   models = doc.css("div.lefthand-nav li").first.text.split("Head")
   #   model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Graphene","").split
@@ -23,7 +23,7 @@ class RacquetFinder::CLI
   #   end
   # end
 
-  # def scrape_babolat_racquet
+  # def scrape_babolat_racquets
   #     doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
   #     models = doc.css("div.lefthand-nav li").first.text.split("Babolat")
   #     model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Pure","").gsub("/",'').split
@@ -36,18 +36,25 @@ class RacquetFinder::CLI
   #   end
 
   # in process
-  def scrape_wilson_racquet
-      doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
-      models = doc.css("div.lefthand-nav li").first.text.split("Wilson")
+  # def scrape_wilson_racquets
+  #     doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
+  #     models = doc.css("div.lefthand-nav li").first.text.split("Wilson")
+  #
+  #     model_array = models.join.gsub("Racquets", "").gsub("Tennis","").split
+  #     # binding.pry
+  #     puts "Select a Wilson Racquet Model"
+  #
+  #     model_array[0..7].each.with_index(1) do |model, i|
+  #          puts "#{i}. #{model}"
+  #        end
+  #   end
 
-      model_array = models.join.gsub("Racquets", "").gsub("Tennis","").split
-      # binding.pry
-      puts "Select a Wilson Racquet Model"
-
-      model_array[0..7].each.with_index(1) do |model, i|
-           puts "#{i}. #{model}"
-         end
-    end
+  #in process
+  def scrape_head_racquet_types
+    doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
+    types = doc.css("div.subcatContent li").attr("id")
+    binding.pry
+  end
 
 
 
