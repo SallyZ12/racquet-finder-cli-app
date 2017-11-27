@@ -12,5 +12,4 @@ class RacquetFinder::Racquet
     @price = price
 
   end
-
 end

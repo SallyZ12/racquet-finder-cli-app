@@ -1,28 +1,39 @@
 class RacquetFinder::CLI
 
   #testing scraper in CLI
-  # def scrape_racquet_brand
-  #   doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
-  #   brands = doc.css("div.lefthand-nav li").first.text.split("racquets")
-  #   brand_array = brands.join.gsub("Racquets", "").split
-  #   puts "Tennis Brands To Choose From:"
-  #   brand_array[1..10].each.with_index(1) do |brand, i|
-  #     puts "#{i}. #{brand}"
-  #   end
-  # end
-
-  def scrape_head_racquet_model
-    doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
-    models = doc.css("div.lefthand-nav li").first.text.split("Head")
-    model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Graphene","").split
-
-    puts "Select a Head Tennis Racquet Model"
-
-    model_array[1..6].each.with_index(1) do |model, i|
-       puts "#{i}. #{model}"
+  def scrape_racquet_brand
+    doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
+    brands = doc.css("div.lefthand-nav li").first.text.split("racquets")
+    brand_array = brands.join.gsub("Racquets", "").split
+    puts "Tennis Brands To Choose From:"
+    brand_array[1..10].each.with_index(1) do |brand, i|
+      puts "#{i}. #{brand}"
     end
   end
 
+  # def scrape_head_racquet
+  #   doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
+  #   models = doc.css("div.lefthand-nav li").first.text.split("Head")
+  #   model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Graphene","").split
+  #
+  #   puts "Select a Head Tennis Racquet Model"
+  #
+  #   model_array[1..6].each.with_index(1) do |model, i|
+  #      puts "#{i}. #{model}"
+  #   end
+  # end
+
+  # def scrape_babolat_racquet
+  #     doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
+  #     models = doc.css("div.lefthand-nav li").first.text.split("Babolat")
+  #     model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Pure","").gsub("/",'').split
+  #
+  #     puts "Select a Babolat Racquet Model"
+  #
+  #     model_array[0..5].each.with_index(1) do |model, i|
+  #          puts "#{i}. #{model}"
+  #        end
+  #   end
 
 
 
