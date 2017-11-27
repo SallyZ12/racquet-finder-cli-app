@@ -4,11 +4,11 @@ class RacquetFinder::Racquet
 
   @@racquets =[]
 
-  def initialize(brand = nil, model = nil, description = nil, price = nil)
+  def initialize(brand = nil, model = nil, type = nil, price = nil)
 
     @brand = brand
     @model = model
-    @description = description
+    @type = type
     @price = price
 
   end
