@@ -1,15 +1,15 @@
 class RacquetFinder::CLI
 
   #testing scraper in CLI
-  def scrape_racquet_brand
-    doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
-    brands = doc.css("div.lefthand-nav li").first.text.split("racquets")
-    brand_array = brands.join.gsub("Racquets", "").split
-    puts "Tennis Brands To Choose From:"
-    brand_array[1..10].each.with_index(1) do |brand, i|
-      puts "#{i}. #{brand}"
-    end
-  end
+  # def scrape_racquet_brand
+  #   doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
+  #   brands = doc.css("div.lefthand-nav li").first.text.split("racquets")
+  #   brand_array = brands.join.gsub("Racquets", "").split
+  #   puts "Tennis Brands To Choose From:"
+  #   brand_array[1..3].each.with_index(1) do |brand, i|
+  #     puts "#{i}. #{brand}"
+  #   end
+  # end
 
   # def scrape_head_racquet
   #   doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
@@ -34,6 +34,21 @@ class RacquetFinder::CLI
   #          puts "#{i}. #{model}"
   #        end
   #   end
+
+
+  def scrape_wilson_racquet
+      doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
+      models = doc.css("div.lefthand-nav li").first.text.split("Wilson")
+
+      model_array = models.join.gsub("Racquets", "").gsub("Tennis","").split
+      binding.pry
+      puts "Select a Wilson Racquet Model"
+
+      model_array[0..5].each.with_index(1) do |model, i|
+           puts "#{i}. #{model}"
+         end
+    end
+
 
 
 
