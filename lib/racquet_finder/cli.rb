@@ -57,7 +57,7 @@ class RacquetFinder::CLI
     #for scraper.rb
     def scrape_babolat_racquet_types
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
-      b_types = doc.css("div.subcatContent h3 a").map {|type| b_type.children[0]}.join.gsub("\r","").gsub("Babolat","").gsub("Tennis","").split("Racquet")
+      b_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Babolat","").gsub("Tennis","").split("Racquet")
 
       #for CSS
       puts "Select a Babolat Racquet Type:"
@@ -84,10 +84,14 @@ class RacquetFinder::CLI
     end
 
     def scrape_wilson_racquet_types
+      doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
+      w_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Wilson","").gsub("Tennis","").split("Racquet")
+
+
+      w_types[0..3].each.with_index(1) do |type, i|
+        puts "#{i}. #{type}"
     end
-
-
-
+  end
 
   def call
     # list_racquet_brands
