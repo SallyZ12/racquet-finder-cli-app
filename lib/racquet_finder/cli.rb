@@ -26,8 +26,6 @@ class RacquetFinder::CLI
     end
   end
 
-
-
     #For scraper.rb
   def scrape_head_racquet_types
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
@@ -56,6 +54,10 @@ class RacquetFinder::CLI
          end
     end
 
+    def scrape_babolat_racquet_types
+    end
+
+
   # for scraper.rb
   def scrape_wilson_racquets
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
@@ -70,7 +72,8 @@ class RacquetFinder::CLI
          end
     end
 
-
+    def scrape_wilson_racquet_types
+    end
 
 
 
