@@ -34,7 +34,7 @@ class RacquetFinder::CLI
         #for CLI
         puts "Select a Head Racquet Type:"
 
-        h_types.each.with_index(1) do |type, i|
+        h_types[0..2].each.with_index(1) do |type, i|
           puts "#{i}. #{type}"
       end
     end
@@ -49,7 +49,7 @@ class RacquetFinder::CLI
       # for CLI
       puts "Select a Babolat Racquet Model:"
 
-        b_models[1..5].each.with_index(1) do |model, i|
+        b_models[1..3].each.with_index(1) do |model, i|
            puts "#{i}. #{model}"
          end
     end
@@ -66,7 +66,6 @@ class RacquetFinder::CLI
         puts "#{i}. #{type}"
 
       end
-      # binding.pry
     end
 
 
