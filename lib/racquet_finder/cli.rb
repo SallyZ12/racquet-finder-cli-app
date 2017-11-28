@@ -66,7 +66,16 @@ class RacquetFinder::CLI
     end
 
 
+    # for scraper.rb
+    def scrape_head_speed_prices
+        doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-speed-tennis-racquets/c/head_speedracquets/"))
+        h_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
 
+        # for cli
+        h_price[1..4].each.with_index(1) do |type, i|
+          puts "#{i}. #{type}"
+      end
+    end
 
 
 
