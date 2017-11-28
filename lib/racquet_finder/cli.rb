@@ -36,13 +36,16 @@ class RacquetFinder::CLI
          end
     end
 
-  # in process
+  # for scraper.rb -- in process
   def scrape_wilson_racquets
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
-      models = doc.css("div.lefthand-nav li").first.text.split("Wilson")
+      # models = doc.css("div.lefthand-nav li").first.text.split("Wilson")
+      models = doc.css("div.lefthand-nav li").first.map{|model|model.children[3].children[3].children[1].children[0]}.join.gsub("\r","").split
+      # models = doc.css("div.subcatContent h2 a").map{|model| model.children[0]}  test
 
-      model_array = models.join.gsub("Racquets", "").gsub("Tennis","").split
+      # model_array = models.join.gsub("Racquets", "").gsub("Tennis","").split
       binding.pry
+      #for CLI
       puts "Select a Wilson Racquet Model"
 
       model_array[0..7].each.with_index(1) do |model, i|
@@ -50,12 +53,13 @@ class RacquetFinder::CLI
          end
     end
 
-  #in process
+  #For scraper.rb
   def scrape_head_racquet_types
     doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
       types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").split("Racquet")
 
-      puts "Select a Head Racquet"
+      #for CLI
+      puts "Select a Head Racquet Type"
 
       types.each.with_index(1) do |type, i|
         puts "#{i}. #{type}"
