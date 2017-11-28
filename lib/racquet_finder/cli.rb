@@ -4,7 +4,7 @@ class RacquetFinder::CLI
   def scrape_racquet_brands
     doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
     brands = doc.css("div.lefthand-nav li a").map {|brand| brand.children[0]}.join.gsub("Tennis","").split("Racquets")
-  
+
     #for CLI
     puts "Tennis Brands To Choose From:"
     brands[1..3].each.with_index(1) do |brand, i|
@@ -43,10 +43,6 @@ class RacquetFinder::CLI
 
 
 
-
-
-
-
   #for scraper.rb
   def scrape_babolat_racquets
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
@@ -71,7 +67,6 @@ class RacquetFinder::CLI
 
       models[1..6].each.with_index(1) do |model, i|
            puts "#{i}. #{model}"
-          # binding.pry
          end
     end
 
