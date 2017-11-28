@@ -158,8 +158,8 @@ class RacquetFinder::CLI
     end
 
     #for scraper.rb
-    def scrape_wilson_racquet_types
-      doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
+    def scrape_wilson_rf_pro_staff
+      doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-rf-prostaff-tennis-racquets/c/wilsonrfprostaff/"))
       w_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Wilson","").gsub("Tennis","").split("Racquet")
 
       #for CLI
