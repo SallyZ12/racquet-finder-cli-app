@@ -36,7 +36,7 @@ class RacquetFinder::CLI
          end
     end
 
-  # for scraper.rb -- in process
+  # for scraper.rb
   def scrape_wilson_racquets
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
       models = doc.css("div.lefthand-nav li a").map {|model| model.children[0]}.join.gsub("\r","").gsub("sWilson","").gsub("Tennis","").split("Racquet")
@@ -54,7 +54,7 @@ class RacquetFinder::CLI
   #For scraper.rb
   def scrape_head_racquet_types
     doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
-      types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").split("Racquet")
+      types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Head","").gsub("Graphene","").gsub("Tennis","").split("Racquet")
 
       #for CLI
       puts "Select a Head Racquet Type"
