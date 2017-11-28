@@ -34,12 +34,22 @@ class RacquetFinder::CLI
         #for CLI
         puts "Select a Head Racquet Type:"
 
-        h_types[0..2].each.with_index(1) do |type, i|
+        h_types[0..3].each.with_index(1) do |type, i|
           puts "#{i}. #{type}"
       end
     end
 
+    def scrape_head_racquet_prices
+        doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
+        h_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
+        # binding.pry
 
+        h_price[1..3].each.with_index(1) do |type, i|
+          puts "#{i}. #{type}"
+        # binding.pry
+
+      end
+    end
 
   #for scraper.rb
   def scrape_babolat_racquets
@@ -83,16 +93,22 @@ class RacquetFinder::CLI
          end
     end
 
+    #for scraper.rb
     def scrape_wilson_racquet_types
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
       w_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Wilson","").gsub("Tennis","").split("Racquet")
 
-
+      #for CLI
       w_types[0..3].each.with_index(1) do |type, i|
         puts "#{i}. #{type}"
     end
   end
 
+
+
+
+
+  #stub for ideas
   def call
     # list_racquet_brands
     list_racquet_models

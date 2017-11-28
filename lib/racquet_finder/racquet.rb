@@ -1,6 +1,6 @@
 class RacquetFinder::Racquet
 
-  attr_accessor :brand, :model, :description, :price
+  attr_accessor :brand, :model, :type, :price
 
   @@racquets =[]
 
