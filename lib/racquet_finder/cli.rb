@@ -14,8 +14,9 @@ class RacquetFinder::CLI
 
   def scrape_head_racquets
     doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
-    models = doc.css("div.lefthand-nav li").first.text.split("Head")
-    model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Graphene","").split
+    models = doc.css("div.lefthand-nav li a").map {|model| model.children[0]}.join.gsub("\r","")
+    # models = doc.css("div.lefthand-nav li").first.text.split("Head")
+    # model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Graphene","").split
 
     puts "Select a Head Tennis Racquet Model"
 
@@ -24,14 +25,15 @@ class RacquetFinder::CLI
     end
   end
 
+  #for scraper.rb
   def scrape_babolat_racquets
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
-      models = doc.css("div.lefthand-nav li").first.text.split("Babolat")
-      model_array = models.join.gsub("Racquets", "").gsub("Tennis","").gsub("Pure","").gsub("/",'').split
+      models = doc.css("div.lefthand-nav li a").map {|model| model.children[0]}.join.gsub("\r","").gsub("sBabolat","").gsub("Tennis","").split("Racquet")
 
-      puts "Select a Babolat Racquet Model"
+      # for CLI
+      puts "Select a Babolat Racquet Model:"
 
-      model_array[0..5].each.with_index(1) do |model, i|
+      models[1..5].each.with_index(1) do |model, i|
            puts "#{i}. #{model}"
          end
     end
@@ -43,7 +45,7 @@ class RacquetFinder::CLI
 
 
       #for CLI
-      puts "Select a Wilson Racquet Model"
+      puts "Select a Wilson Racquet Model:"
 
       models[1..6].each.with_index(1) do |model, i|
            puts "#{i}. #{model}"
@@ -57,7 +59,7 @@ class RacquetFinder::CLI
       types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Head","").gsub("Graphene","").gsub("Tennis","").split("Racquet")
 
       #for CLI
-      puts "Select a Head Racquet Type"
+      puts "Select a Head Racquet Type:"
 
       types.each.with_index(1) do |type, i|
         puts "#{i}. #{type}"
