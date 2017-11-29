@@ -81,8 +81,38 @@ class RacquetFinder::Scraper
         end
 
 
+        def scrape_babolat_pure_aero
+          doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-pure-aero-aeropro-tennis-racquets/c/1011/"))
+          b_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Babolat","").gsub("Tennis","").split("Racquet")
+
+          b_types[1..4].each.with_index(1) do |type, i|
+            puts "#{i}. #{type}"
+          end
+        end
 
 
+
+        def scrape_babolat_pure_drive_prices
+            doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-pure-drive-tennis-racquets/c/1012/"))
+            b_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
+
+            b_price[1..4].each.with_index(1) do |type, i|
+              puts "#{i}. #{type}"
+          end
+        end
+
+
+
+        def scrape_babolat_pure_aero_prices
+            doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-pure-aero-aeropro-tennis-racquets/c/1011/"))
+            b_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
+
+            b_price[1..4].each.with_index(1) do |type, i|
+              puts "#{i}. #{type}"
+          end
+        end
+
+        
 
 
 
