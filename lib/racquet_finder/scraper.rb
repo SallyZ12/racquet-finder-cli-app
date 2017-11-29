@@ -148,13 +148,22 @@ class RacquetFinder::Scraper
 
         def scrape_wilson_rf_pro_staff_prices
             doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-rf-prostaff-tennis-racquets/c/wilsonrfprostaff/"))
-            b_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
+            w_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
 
-            b_price[1..4].each.with_index(1) do |type, i|
+            w_price[1..4].each.with_index(1) do |type, i|
               puts "#{i}. #{type}"
           end
         end
 
 
+        def scrape_wilson_ultra_prices
+            doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-ultra-tennis-racquets/c/wilsonultra/"))
+            w_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
+
+
+            w_price[1..4].each.with_index(1) do |type, i|
+              puts "#{i}. #{type}"
+          end
+        end
 
   end
