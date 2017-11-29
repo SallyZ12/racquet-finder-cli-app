@@ -124,4 +124,28 @@ class RacquetFinder::Scraper
 
 
 
+          def scrape_wilson_rf_pro_staff
+            doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-rf-prostaff-tennis-racquets/c/wilsonrfprostaff/"))
+            w_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Wilson","").gsub("Tennis","").split("Racquet")
+
+
+            w_types[0..3].each.with_index(1) do |type, i|
+              puts "#{i}. #{type}"
+          end
+        end
+
+
+        def scrape_wilson_ultra
+          doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-ultra-tennis-racquets/c/wilsonultra/"))
+          w_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Wilson","").gsub("Tennis","").split("Racquet")
+
+          w_types[0..3].each.with_index(1) do |type, i|
+            puts "#{i}. #{type}"
+        end
+        end
+
+        
+
+
+
   end
