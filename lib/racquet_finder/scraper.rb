@@ -112,7 +112,15 @@ class RacquetFinder::Scraper
           end
         end
 
-        
+
+        def scrape_wilson_racquets
+            doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
+            w_models = doc.css("div.lefthand-nav li a").map {|model| model.children[0]}.join.gsub("\r","").gsub("sWilson","").gsub("Tennis","").split("Racquet")
+
+            w_models[1..6].each.with_index(1) do |model, i|
+                 puts "#{i}. #{model}"
+               end
+          end
 
 
 
