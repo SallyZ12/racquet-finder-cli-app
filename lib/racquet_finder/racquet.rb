@@ -2,7 +2,7 @@ class RacquetFinder::Racquet
 
   attr_accessor :brand, :model, :type, :price
 
-  @@racquets =[]
+  @@all =[]
 
   def initialize(brand = nil, model = nil, type = nil, price = nil)
     @brand = brand
@@ -11,8 +11,10 @@ class RacquetFinder::Racquet
     @price = price
   end
 
-  
 
+def self.all
+  @@all
+end
 
 
 
