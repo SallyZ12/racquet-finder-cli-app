@@ -59,6 +59,30 @@ class RacquetFinder::Scraper
       end
 
 
+      def scrape_babolat_racquets
+          doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
+            b_models = doc.css("div.lefthand-nav li a").map {|model| model.children[0]}.join.gsub("\r","").gsub("sBabolat","").gsub("Tennis","").split("Racquet")
+
+            b_models[1..3].each.with_index(1) do |model, i|
+               puts "#{i}. #{model}"
+            end
+        end
+
+
+
+        def scrape_babolat_pure_drive
+          doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-pure-drive-tennis-racquets/c/1012/"))
+          b_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Babolat","").gsub("Tennis","").split("Racquet")
+
+          b_types[1..4].each.with_index(1) do |type, i|
+            puts "#{i}. #{type}"
+
+          end
+        end
+
+
+
+
 
 
 
