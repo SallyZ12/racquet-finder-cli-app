@@ -4,41 +4,37 @@ class RacquetFinder::CLI
       puts ""
       puts  "Welcome to the World of Tennis Racquets"
       puts ""
-
-
-      puts "To select a Racquet start by selecting the Brand"
-      puts ""
-
-      RacquetFinder::Scraper.new.scrape_racquet_brands
-
-      puts ""
-      puts "Select a Racquet Model"
-
-      RacquetFinder::Scraper.new.scrape_head_racquets
-
-      puts ""
-      puts "Select a Racquet"
-
-      RacquetFinder::Scraper.new.scrape_head_radical
-
-      puts " To Start Over Enter Yes "
-
-      RacquetFinder::Scraper.new.scrape_racquet_brands
-
     end
 
+    def start
+        RacquetFinder::Scraper.new.scrape_racquet_brands
+        puts ""
+        puts "To select a Racquet start by selecting the Brand by Number"
+        puts ""
+        input = gets.strip
+        puts ""
 
-  def list_racquet_brands
-    puts "List of Tennis Racquet Brands"
-    puts "1. Babolat, 2. Head, 3. Wilson"
-  end
+        RacquetFinder::Scraper.new.scrape_head_racquets
+        puts ""
+        puts "Select a Racquet Model"
+        input = gets.strip
+        puts ""
 
-  def list_racquet_models
-    # input = nil
-    # while input != exit
+        RacquetFinder::Scraper.new.scrape_head_radical
+        puts ""
+        puts "Select a Racquet"
+        puts ""
+        input = gets.strip
+        puts ""
+        
 
-    puts "1. Head Radical Pro, 2. Head Radical Touch, 3. Head Radical MPA"
-    end
-  # end
+        puts "Would you like to select another racquet? Enter Y or N"
 
+          input = gets.strip.downcase
+            if input == "y"
+                start
+            else
+              puts "Thanks enjoy your racquet!"
+            end
+          end
 end
