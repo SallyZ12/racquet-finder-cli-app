@@ -5,9 +5,10 @@ class RacquetFinder::CLI
     end
 
     def start
+        puts "To select a Racquet start by selecting the Brand by Number"
+        puts ""
         list_brands
         puts ""
-        puts "To select a Racquet start by selecting the Brand by Number"
         puts ""
         input = gets.strip
         puts ""
@@ -65,7 +66,7 @@ class RacquetFinder::CLI
           @head_radical[0..3].each.with_index(1) do |type, i|
             puts "#{i}. #{type}"
           end
-        end      
+        end
 
 
 end

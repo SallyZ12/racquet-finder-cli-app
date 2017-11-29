@@ -3,5 +3,3 @@
 require_relative '../lib/racquet_finder'
 
 RacquetFinder::CLI.new.call
-RacquetFinder::Scraper.new.call
-RacquetFinder::Racquet.new.call
