@@ -4,15 +4,27 @@ class RacquetFinder::CLI
       puts ""
       puts  "Welcome to the World of Tennis Racquets"
       puts ""
-    end
 
-
-    def start
 
       puts "To select a Racquet start by selecting the Brand"
       puts ""
 
       RacquetFinder::Scraper.new.scrape_racquet_brands
+
+      puts ""
+      puts "Select a Racquet Model"
+
+      RacquetFinder::Scraper.new.scrape_head_racquets
+
+      puts ""
+      puts "Select a Racquet"
+
+      RacquetFinder::Scraper.new.scrape_head_radical
+
+      puts " To Start Over Enter Yes "
+
+      RacquetFinder::Scraper.new.scrape_racquet_brands
+
     end
 
 
