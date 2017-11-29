@@ -13,9 +13,6 @@ class RacquetFinder::Racquet
 
 
 
-
-
-
 def self.all
   @@all
 end

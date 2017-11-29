@@ -36,9 +36,9 @@ class RacquetFinder::Scraper
         doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-speed-tennis-racquets/c/head_speedracquets/"))
           h_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Head","").gsub("Graphene","").gsub("Tennis","").split("Racquet")
 
-          h_types[0..3].each.with_index(1) do |type, i|
-            puts "#{i}. #{type}"
-        end
+        #   h_types[0..3].each.with_index(1) do |type, i|
+        #     puts "#{i}. #{type}"
+        # end
       end
 
 

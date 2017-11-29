@@ -32,6 +32,19 @@ class RacquetFinder::CLI
 
         puts "You have selected Head Graphene Radical Touch Pro at a price of $219.95"
         puts ""
+
+
+        list_head_speed
+        puts ""
+        puts "Select a Racquet"
+        puts ""
+        input = gets.strip
+        puts ""
+
+        puts "You have selected Head Graphene Touch Speed Adaptive at a price of $189.95"
+        puts ""
+
+
         puts "Would you like to select another racquet? Enter Y or N"
 
           input = gets.strip.downcase
@@ -69,4 +82,11 @@ class RacquetFinder::CLI
         end
 
 
+        def list_head_speed
+          puts "Head Speed Racquets"
+          @head_speed = RacquetFinder::Scraper.new.scrape_head_speed
+          @head_speed[0..3].each.with_index(1) do |type, i|
+            puts "#{i}. #{type}"
+        end
+      end
 end
