@@ -11,7 +11,7 @@ class RacquetFinder::Racquet
     @price = price
   end
 
-
+  
 
 def self.all
   @@all

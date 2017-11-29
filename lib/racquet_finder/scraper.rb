@@ -1,8 +1,9 @@
 class RacquetFinder::Scraper
 
   def get_url(url)
-    Nokogiri::HTML(open(url))
+    doc = Nokogiri::HTML(open(url))
   end
+
 
   def scrape_racquet_brands
     doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
