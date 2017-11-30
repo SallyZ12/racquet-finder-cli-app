@@ -12,16 +12,14 @@ class RacquetFinder::CLI
         puts ""
         input = gets.strip
 
-        # if input == 1
-        #   list_babolat_models
-        # elsif input == 2
-        #   list_head_models
-        #   puts " You selected Head Racquets"
-        # elsif input == 3
-        #   list_wilson_modes
-        # else
-        #   puts "Sorry not available-- try Amazon"
-        # end
+        if input == "1"
+          list_babolat_models
+        elsif input == "2"
+          list_head_models
+          puts " You selected Head Racquets"
+        else input == "3"
+          list_wilson_models
+        end
 
         list_head_models
         puts ""
