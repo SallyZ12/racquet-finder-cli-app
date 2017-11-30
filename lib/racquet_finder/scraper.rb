@@ -7,8 +7,9 @@ class RacquetFinder::Scraper
 
   def scrape_racquet_brands
     doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
-    binding.pry
-    brands = doc.css("div.lefthand-nav li a").map {|brand| brand.children[0]}.join.gsub("Tennis","").split("Racquets")
+    # binding.pry
+    brands = doc.css("ul.subcat li").children.text.split("Racquets")
+    # brands = doc.css("div.lefthand-nav li a").map {|brand| brand.children[0]}.join.gsub("Tennis","").split("Racquets")
 
     # brands[1..3].each.with_index(1) do |brand, i|
     #   puts "#{i}. #{brand}"
