@@ -69,8 +69,8 @@ class RacquetFinder::Scraper
           doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
             b_models = doc.css("div.lefthand-nav li a").map {|model| model.children[0]}.join.gsub("\r","").gsub("sBabolat","").gsub("Tennis","").split("Racquet")
 
-            b_models[1..3].each.with_index(1) do |model, i|
-               puts "#{i}. #{model}"
+            # b_models[1..3].each.with_index(1) do |model, i|
+            #    puts "#{i}. #{model}"
             end
         end
 
@@ -80,8 +80,8 @@ class RacquetFinder::Scraper
           doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-pure-drive-tennis-racquets/c/1012/"))
           b_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Babolat","").gsub("Tennis","").split("Racquet")
 
-          b_types[1..4].each.with_index(1) do |type, i|
-            puts "#{i}. #{type}"
+          # b_types[1..4].each.with_index(1) do |type, i|
+          #   puts "#{i}. #{type}"
 
           end
         end
@@ -91,8 +91,8 @@ class RacquetFinder::Scraper
           doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-pure-aero-aeropro-tennis-racquets/c/1011/"))
           b_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Babolat","").gsub("Tennis","").split("Racquet")
 
-          b_types[1..4].each.with_index(1) do |type, i|
-            puts "#{i}. #{type}"
+          # b_types[1..4].each.with_index(1) do |type, i|
+          #   puts "#{i}. #{type}"
           end
         end
 
@@ -102,8 +102,8 @@ class RacquetFinder::Scraper
             doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-pure-drive-tennis-racquets/c/1012/"))
             b_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
 
-            b_price[1..4].each.with_index(1) do |type, i|
-              puts "#{i}. #{type}"
+            # b_price[1..4].each.with_index(1) do |type, i|
+            #   puts "#{i}. #{type}"
           end
         end
 
@@ -113,8 +113,8 @@ class RacquetFinder::Scraper
             doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-pure-aero-aeropro-tennis-racquets/c/1011/"))
             b_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
 
-            b_price[1..4].each.with_index(1) do |type, i|
-              puts "#{i}. #{type}"
+            # b_price[1..4].each.with_index(1) do |type, i|
+            #   puts "#{i}. #{type}"
           end
         end
 
@@ -123,8 +123,8 @@ class RacquetFinder::Scraper
             doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-tennis-racquets/c/111/"))
             w_models = doc.css("div.lefthand-nav li a").map {|model| model.children[0]}.join.gsub("\r","").gsub("sWilson","").gsub("Tennis","").split("Racquet")
 
-            w_models[1..6].each.with_index(1) do |model, i|
-                 puts "#{i}. #{model}"
+            # w_models[1..6].each.with_index(1) do |model, i|
+            #      puts "#{i}. #{model}"
                end
           end
 
@@ -135,8 +135,8 @@ class RacquetFinder::Scraper
             w_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Wilson","").gsub("Tennis","").split("Racquet")
 
 
-            w_types[0..3].each.with_index(1) do |type, i|
-              puts "#{i}. #{type}"
+            # w_types[0..3].each.with_index(1) do |type, i|
+            #   puts "#{i}. #{type}"
           end
         end
 
@@ -145,8 +145,8 @@ class RacquetFinder::Scraper
           doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-ultra-tennis-racquets/c/wilsonultra/"))
           w_types = doc.css("div.subcatContent h3 a").map {|type| type.children[0]}.join.gsub("\r","").gsub("Wilson","").gsub("Tennis","").split("Racquet")
 
-          w_types[0..3].each.with_index(1) do |type, i|
-            puts "#{i}. #{type}"
+          # w_types[0..3].each.with_index(1) do |type, i|
+          #   puts "#{i}. #{type}"
         end
         end
 
@@ -156,8 +156,8 @@ class RacquetFinder::Scraper
             doc = Nokogiri::HTML(open("http://www.midwestsports.com/wilson-rf-prostaff-tennis-racquets/c/wilsonrfprostaff/"))
             w_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
 
-            w_price[1..4].each.with_index(1) do |type, i|
-              puts "#{i}. #{type}"
+            # w_price[1..4].each.with_index(1) do |type, i|
+            #   puts "#{i}. #{type}"
           end
         end
 
@@ -167,8 +167,8 @@ class RacquetFinder::Scraper
             w_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
 
 
-            w_price[1..4].each.with_index(1) do |type, i|
-              puts "#{i}. #{type}"
+            # w_price[1..4].each.with_index(1) do |type, i|
+            #   puts "#{i}. #{type}"
           end
         end
 

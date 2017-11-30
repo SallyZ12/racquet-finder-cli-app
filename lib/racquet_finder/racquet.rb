@@ -14,13 +14,21 @@ class RacquetFinder::Racquet
   #my code followig Enoch
   def scrape_brands
       doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
-
-      brand_name = doc.css("ul.subcat li").text.split("Racquets").each do |brand|
-        @@BRANDS<<brand
-
       binding.pry
+
+      #this code is working for brand_names into an array
+      # brand_name = doc.css("ul.subcat li").text.split("Racquets").each do |brand|
+      #   @@BRANDS<<brand
+
+      # brand_url = doc.css("ul.subcat li").css("a").attr("href").value.gsub("\r","").each do |url|
+
+        brand_url = doc.css("ul.subcat li a").attr("href").value.gsub("\r","")
+        # @@BRANDS<<url
+
+      # binding.pry
       # Racquet.brands.push(some css)
-    end
+
+
   end
 
 
@@ -30,7 +38,7 @@ def scrape_models
   self.brands.each do |brand|
     doc = Nokogiri::HTML(open(brand[:url]))
     doc.somecss.each do |model|
-      Racket.models.push(some css)
+      Racquet.models.push(some css)
     end
   end
 end
