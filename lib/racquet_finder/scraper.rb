@@ -49,9 +49,9 @@ class RacquetFinder::Scraper
           doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-radical-tennis-racquets/c/head_radicalracquets/"))
           h_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
 
-          h_price[1..4].each.with_index(1) do |type, i|
-            puts "#{i}. #{type}"
-        end
+        #   h_price[1..4].each.with_index(1) do |type, i|
+        #     puts "#{i}. #{type}"
+        # end
       end
 
 
@@ -59,9 +59,9 @@ class RacquetFinder::Scraper
           doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-speed-tennis-racquets/c/head_speedracquets/"))
           h_price = doc.css("p.price strong").map {|price| price.children[0]}.join.gsub("\r","").gsub("when buying 2+","").split("$")
 
-          h_price[1..4].each.with_index(1) do |type, i|
-            puts "#{i}. #{type}"
-        end
+        #   h_price[1..4].each.with_index(1) do |type, i|
+        #     puts "#{i}. #{type}"
+        # end
       end
 
 
@@ -71,7 +71,7 @@ class RacquetFinder::Scraper
 
             # b_models[1..3].each.with_index(1) do |model, i|
             #    puts "#{i}. #{model}"
-            end
+            # end
         end
 
 
@@ -83,7 +83,7 @@ class RacquetFinder::Scraper
           # b_types[1..4].each.with_index(1) do |type, i|
           #   puts "#{i}. #{type}"
 
-          end
+          # end
         end
 
 
@@ -93,7 +93,7 @@ class RacquetFinder::Scraper
 
           # b_types[1..4].each.with_index(1) do |type, i|
           #   puts "#{i}. #{type}"
-          end
+          # end
         end
 
 
@@ -104,7 +104,7 @@ class RacquetFinder::Scraper
 
             # b_price[1..4].each.with_index(1) do |type, i|
             #   puts "#{i}. #{type}"
-          end
+          # end
         end
 
 
@@ -115,7 +115,7 @@ class RacquetFinder::Scraper
 
             # b_price[1..4].each.with_index(1) do |type, i|
             #   puts "#{i}. #{type}"
-          end
+          # end
         end
 
 
@@ -125,7 +125,7 @@ class RacquetFinder::Scraper
 
             # w_models[1..6].each.with_index(1) do |model, i|
             #      puts "#{i}. #{model}"
-               end
+              #  end
           end
 
 
@@ -137,7 +137,7 @@ class RacquetFinder::Scraper
 
             # w_types[0..3].each.with_index(1) do |type, i|
             #   puts "#{i}. #{type}"
-          end
+          # end
         end
 
 
@@ -147,7 +147,7 @@ class RacquetFinder::Scraper
 
           # w_types[0..3].each.with_index(1) do |type, i|
           #   puts "#{i}. #{type}"
-        end
+        # end
         end
 
 
@@ -158,7 +158,7 @@ class RacquetFinder::Scraper
 
             # w_price[1..4].each.with_index(1) do |type, i|
             #   puts "#{i}. #{type}"
-          end
+          # end
         end
 
 
@@ -169,7 +169,7 @@ class RacquetFinder::Scraper
 
             # w_price[1..4].each.with_index(1) do |type, i|
             #   puts "#{i}. #{type}"
-          end
+          # end
         end
 
   end

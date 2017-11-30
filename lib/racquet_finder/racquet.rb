@@ -22,13 +22,11 @@ class RacquetFinder::Racquet
 
       # brand_url = doc.css("ul.subcat li").css("a").attr("href").value.gsub("\r","").each do |url|
 
-        brand_url = doc.css("ul.subcat li a").attr("href").value.gsub("\r","")
+        brand_url = doc.css("ul.subcat li a").attr("href").text.gsub("\r","")
         # @@BRANDS<<url
 
       # binding.pry
       # Racquet.brands.push(some css)
-
-
   end
 
 
