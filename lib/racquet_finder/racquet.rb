@@ -1,6 +1,6 @@
 class RacquetFinder::Racquet
 
-  attr_accessor :brand, :model, :model_url, :type, :type_url, :price
+  attr_accessor :brand, :model, :model_url, :type, :description, :price
 
   @@all = []
   @@BRANDS = [] #Enoch code
@@ -9,16 +9,16 @@ class RacquetFinder::Racquet
   # models: [{name: some # model, url: www.url.com}]}]
 
   #Enoch Code
-  # @@BRANDS = [{brand_name: "head", brand_url: "www.some.url", models: [{model_name: "radical",model_url: "www.some.url"}]}]
+  # @@BRANDS = [{name: "head", url: "www.some.url", models: [{name: "radical",url: "www.some.url"}]}]
 
-  def initialize(brand = nil, model = nil, model_url, type = nil, type_url, type_price = nil)
-    @brand = brand
-    @model = model
-    @model_url = model_url
-    @type = type
-    @type_url = type_url
-    @type_price = type_price
-  end
+
+  # def initialize(brand = nil, model = nil, model_url= nil, type = nil, type_url= nil, type_price = nil)
+  #   @brand = brand
+  #   @model = model
+  #   @model_url = model_url
+  #   @type = type
+  #   @type_price = type_price
+  # end
 
 
 
@@ -27,13 +27,13 @@ class RacquetFinder::Racquet
       doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
       #this code is working for brand_names into an array
       brand_name = doc.css("ul.subcat li").text.split("Racquets").each do |brand|
-        binding.pry
+        @@BRANDS<<brand
+            binding.pry
+        # Racquet.brand.push(some css)
 
-          # Racquet.brand.push(some css)  testing the following @@BRANDS is an array not a hash
-          # @@BRANDS[:brand_name]=brand
-          # @@BRANDS<<brand
-          # binding.pry
         end
+    end
+
 
       # brand_url = doc.css("ul.subcat li").css("a").attr("href").value.gsub("\r","").each do |url|
 
@@ -42,15 +42,15 @@ class RacquetFinder::Racquet
         # @@BRANDS<<url
 
       # binding.pry
-      # Racquet.brand.push(some css)
-  end
+
+
 
 
 
 #Enoch Code
 def scrape_models
   self.brands.each do |brand|
-    doc = Nokogiri::HTML(open(brand[:url]))
+    doc = Nokogiri::HTML(open(brand[:model_url]))
     doc.somecss.each do |model|
       Racquet.models.push(some css)
     end
@@ -66,8 +66,9 @@ def scrape_rackets
       doc = Nokogiri::HTML(open(model[:url]))
       doc.somecss.each do |racket|
         type = scraped css of the type
+        description = scraped css of description
         price = scraped css of the price
-        Racquet.new(brand_name[:name], model_name[:name], type, price)
+        Racquet.new(brand[:name], model[:name], type, description,price)
       end
     end
   end
@@ -86,11 +87,9 @@ end
   end
 
 
-def self.all
+  def self.all
   @@all
-end
-
-
+  end
 
 
 end
