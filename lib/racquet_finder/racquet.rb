@@ -1,6 +1,6 @@
 class RacquetFinder::Racquet
 
-  attr_accessor :brand, :model, :model_url, :type, :description, :price
+  attr_accessor :brand_name, :model, :model_url, :type, :description, :price
 
   @@all = []
   @@BRANDS = [] #Enoch code
@@ -25,8 +25,8 @@ class RacquetFinder::Racquet
   #my code followig Enoch
     def scrape_brands
       doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
-      brand_name = doc.css("ul.subcat li").text.split("Racquets").each do |brand|
-        @@BRANDS<<[name: brand]
+      name = doc.css("ul.subcat li").text.split("Racquets").each do |brand|
+        @@BRANDS<<[brand_name: brand]
             binding.pry
         # Racquet.brand.push(some css)
 
@@ -67,7 +67,7 @@ def scrape_rackets
         type = scraped css of the type
         description = scraped css of description
         price = scraped css of the price
-        Racquet.new(brand[:name], model[:name], type, description,price)
+        Racquet.new(brand[:name], model[:name], type, description, price)
       end
     end
   end
