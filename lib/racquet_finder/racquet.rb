@@ -1,6 +1,6 @@
 class RacquetFinder::Racquet
 
-  attr_accessor :brand, :model_name, :model_url, :type_name, :type_url, :price
+  attr_accessor :brand, :model, :model_url, :type, :type_url, :price
 
   @@all = []
   @@BRANDS = [] #Enoch code
@@ -11,14 +11,14 @@ class RacquetFinder::Racquet
   #Enoch Code
   # @@BRANDS = [{brand_name: "head", brand_url: "www.some.url", models: [{model_name: "radical",model_url: "www.some.url"}]}]
 
-  # def initialize(brand_name = nil, model_name = nil, model_url, type_name = nil, type_url, type_price = nil)
-  #   @brand_name = brand_name
-  #   @model_name = model_name
-  #   @model_url = model_url
-  #   @type_name = type_name
-  #   @type_url = type_url
-  #   @type_price = type_price
-  # end
+  def initialize(brand = nil, model = nil, model_url, type = nil, type_url, type_price = nil)
+    @brand = brand
+    @model = model
+    @model_url = model_url
+    @type = type
+    @type_url = type_url
+    @type_price = type_price
+  end
 
 
 
@@ -30,7 +30,7 @@ class RacquetFinder::Racquet
         binding.pry
 
           # Racquet.brand.push(some css)  testing the following @@BRANDS is an array not a hash
-          @@BRANDS[:brand_name]=brand
+          # @@BRANDS[:brand_name]=brand
           # @@BRANDS<<brand
           # binding.pry
         end
