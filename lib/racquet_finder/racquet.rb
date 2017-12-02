@@ -1,6 +1,6 @@
 class RacquetFinder::Racquet
 
-  attr_accessor :brand_name, :model, :model_url, :type, :description, :price
+  attr_accessor :brand_name, :brand_url, :model, :model_url, :type, :description, :price
 
   @@all = []
   @@BRANDS = [] #Enoch code
@@ -12,13 +12,13 @@ class RacquetFinder::Racquet
   # @@BRANDS = [{name: "head", url: "www.some.url", models: [{name: "radical",url: "www.some.url"}]}]
 
 
-  # def initialize(brand = nil, model = nil, model_url= nil, type = nil, type_url= nil, type_price = nil)
-  #   @brand = brand
-  #   @model = model
-  #   @model_url = model_url
-  #   @type = type
-  #   @type_price = type_price
-  # end
+  def initialize(brand_name = nil, brand_url = nil, model = nil, model_url= nil, type = nil, type_url= nil, type_price = nil)
+    @brand_name = brand_name
+    @model = model
+    @model_url = model_url
+    @type = type
+    @type_price = type_price
+  end
 
 
 
@@ -26,22 +26,19 @@ class RacquetFinder::Racquet
     def scrape_brands
       doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
       name = doc.css("ul.subcat li").text.split("Racquets").each do |brand|
-        @@BRANDS<<[brand_name: brand]
+        @@BRANDS<<{brand_name: brand}
             binding.pry
+
+
+        # brand_url = doc.css("ul.subcat li").css("a").attr("href").value.gsub("\r","").each do |url|
+          # brand_url = doc.css("ul.subcat li a").attr("href").text.gsub("\r","")
+
+
+
         # Racquet.brand.push(some css)
 
         end
     end
-
-
-      # brand_url = doc.css("ul.subcat li").css("a").attr("href").value.gsub("\r","").each do |url|
-
-        # brand_url = doc.css("ul.subcat li a").attr("href").text.gsub("\r","")
-        # binding.pry
-        # @@BRANDS<<url
-
-      # binding.pry
-
 
 
 
