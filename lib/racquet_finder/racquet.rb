@@ -1,6 +1,6 @@
 class RacquetFinder::Racquet
 
-  attr_accessor :brand_name, :brand_url, :model, :model_url, :type, :description, :price
+  attr_accessor :name, :url, :model, :model_url, :type, :description, :price
 
   @@all = []
   @@BRANDS = [] #Enoch code
@@ -12,10 +12,11 @@ class RacquetFinder::Racquet
   # @@BRANDS = [{name: "head", url: "www.some.url", models: [{name: "radical",url: "www.some.url"}]}]
 
 
-  def initialize(brand_name = nil, brand_url = nil, model = nil, model_url= nil)
-    @brand_name = brand_name
+  def initialize(name = nil, url = nil, model = nil, model_url= nil)
+    @name = name
+    @url = url
     @model = model
-    @model_url = model_url
+
   end
 
 
@@ -35,12 +36,12 @@ class RacquetFinder::Racquet
     end
 
 
-#Enoch Code
-def scrape_models
-  self.brands.each do |brand|
-    doc = Nokogiri::HTML(open(brand[:model_url]))
-    doc.somecss.each do |model|
-      Racquet.models.push(some css)
+    #Enoch Code
+    def scrape_models
+      self.brands.each do |brand|
+        doc = Nokogiri::HTML(open(brand[:model_url]))
+        doc.somecss.each do |model|
+          Racquet.models.push(some css)
     end
   end
 end
@@ -71,7 +72,7 @@ end
 
   #Enoch Code
   def self.add_brand(name, url)
-      @@BRANDS<<{brand_name: brand}
+      # @@BRANDS<<{brand_name: brand}
 
   end
 
