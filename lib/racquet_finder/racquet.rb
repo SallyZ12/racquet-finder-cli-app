@@ -20,7 +20,7 @@ class RacquetFinder::Racquet
 
 
 
-  #my code followig Enoch
+
     def scrape_brands
       doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
 
@@ -33,8 +33,6 @@ class RacquetFinder::Racquet
         @@BRANDS<<b
         end
     end
-
-
 
 
 #Enoch Code
