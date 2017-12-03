@@ -12,12 +12,10 @@ class RacquetFinder::Racquet
   # @@BRANDS = [{name: "head", url: "www.some.url", models: [{name: "radical",url: "www.some.url"}]}]
 
 
-  def initialize(brand_name = nil, brand_url = nil, model = nil, model_url= nil, type = nil, type_url= nil, type_price = nil)
+  def initialize(brand_name = nil, brand_url = nil, model = nil, model_url= nil)
     @brand_name = brand_name
     @model = model
     @model_url = model_url
-    @type = type
-    @type_price = type_price
   end
 
 
@@ -25,18 +23,14 @@ class RacquetFinder::Racquet
   #my code followig Enoch
     def scrape_brands
       doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
-      name = doc.css("ul.subcat li").text.split("Racquets").each do |brand|
-        @@BRANDS<<{brand_name: brand}
-            binding.pry
 
+      doc.css("ul.subcat li a").each do |brand|
 
-        # brand_url = doc.css("ul.subcat li").css("a").attr("href").value.gsub("\r","").each do |url|
-          # brand_url = doc.css("ul.subcat li a").attr("href").text.gsub("\r","")
-
-
-
-        # Racquet.brand.push(some css)
-
+        b={}
+        b[:name]=brand.text.gsub("\r","").gsub(" Racquets","")
+        b[:url]=brand.attr("href").gsub("\r","").gsub(" //","")
+        b[:models]=[]
+        @@BRANDS<<b
         end
     end
 
@@ -79,6 +73,7 @@ end
 
   #Enoch Code
   def self.add_brand(name, url)
+      @@BRANDS<<{brand_name: brand}
 
   end
 
