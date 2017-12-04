@@ -38,17 +38,19 @@ class RacquetFinder::Racquet
     def scrape_models
         self.scrape_brands
 
+          # self.brands.each do |brand|
           @@BRANDS.each do |brand|
-            binding.pry
-            # self.brands.each do |brand|
-            # doc = Nokogiri::HTML(open(brand[:url]))
-            doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
-            doc.css("ul.subcat li a").each do |model|
-            model.text.gsub("\r","").gsub(" Racquets","").gsub("Head Graphene","").gsub("Tennis","")
-            model.attr("href").gsub("\r","").gsub(" //","")
-        # doc.somecss.each do |model|
 
-          # Racquet.models.push(some css)
+            # doc = Nokogiri::HTML(open(brand[:url]))
+            doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
+
+            doc.css("ul.subcat li a").each do |model|
+              binding.pry
+            m = model.text.gsub("\r","").gsub(" Racquets","").gsub("Tennis","").gsub(" ","")
+            model.attr("href").gsub("\r","").gsub(" //","")
+            @@BRANDS[0][:models]<<m
+
+
     end
   end
 end
