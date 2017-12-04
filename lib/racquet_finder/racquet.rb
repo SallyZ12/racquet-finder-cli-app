@@ -12,11 +12,9 @@ class RacquetFinder::Racquet
   # @@BRANDS = [{name: "head", url: "www.some.url", models: [{name: "radical",url: "www.some.url"}]}]
 
 
-  def initialize(name = nil, url = nil, model_name = nil, model_url= nil, type = nil, price = nil)
+  def initialize(name = nil, model_name = nil,type = nil, price = nil)
     @name = name
-    @url = url
     @model_name = model_name
-    @model_url = model_url
     @type = type
     @price = price
   end
@@ -45,9 +43,12 @@ class RacquetFinder::Racquet
 
             m = {}
             doc.css("ul.subcat li a").each do |model|
+
             m[:model_name] = model.text.gsub("\r","").gsub(" Racquets","").gsub("Tennis","").gsub(" ","")
+
             m[:model_url]= model.attr("href").gsub("\r","").gsub("//","")
               binding.pry
+
             @@BRANDS[0][:models]<<m
 
     end
@@ -63,15 +64,19 @@ def scrape_racquets
       model[:model_name] # the name of the model
       # doc = Nokogiri::HTML(open(model[:url]))
       doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
-      doc.css("ul.subcat li a").each do |r|
-        binding.pry
-        type = r.text.gsub("\r","").gsub(" Racquets","").gsub(" ","")
+
+        doc.css("ul.subcat li a").each do |r|
+          binding.pry
+          type = r.text.gsub("\r","").gsub(" Racquets","").gsub(" ","")
 
 
-        doc.css("p.price strong").each do |p|
-          price = p.children[0].join.gsub("\r","").gsub("when buying 2+","").split("$")
+          doc.css("p.price strong").each do |pr|
 
-          Racquet.new(brand[:name], model[:name], type, price)
+          price = pr.children[0].join.gsub("\r","").gsub("when buying 2+","").split("$")
+
+
+
+          Racquet.new(brand[:name], model[:model_name], type, price)
 
           end
       end
@@ -87,7 +92,7 @@ end
 
   #Enoch Code
   def self.add_brand(name, url)
-      # @@BRANDS<<{brand_name: brand}
+
 
   end
 
