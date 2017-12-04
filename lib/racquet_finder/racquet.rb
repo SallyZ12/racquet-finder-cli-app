@@ -93,7 +93,6 @@ end
   #Enoch Code
   def self.add_brand(name, url)
 
-
   end
 
 
