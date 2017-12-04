@@ -47,25 +47,26 @@ class RacquetFinder::Racquet
             doc.css("ul.subcat li a").each do |model|
             m[:model_name] = model.text.gsub("\r","").gsub(" Racquets","").gsub("Tennis","").gsub(" ","")
             m[:model_url]= model.attr("href").gsub("\r","").gsub(" //","")
-              binding.pry
+              # binding.pry
             @@BRANDS[0][:models]<<m
-
 
     end
   end
 end
 
 #Enoch Code
-def scrape_rackets
+def scrape_racquets
   self.brands.each do |brand|
     brand[:models].each do |model|
       brand[:name] # the name of the brand
-      model[:name] # the name of the model
-      doc = Nokogiri::HTML(open(model[:url]))
-      doc.somecss.each do |racquet|
-        type = scraped css of the type
+      model[:model_name] # the name of the model
+      # doc = Nokogiri::HTML(open(model[:url]))
+      doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
+      doc.css("ul.subcat li a").each do |racquet|
+        binding.pry
+        type = racquet.text.gsub("\r","").gsub(" Racquets","").gsub(" ","")
         description = scraped css of description
-        price = scraped css of the price
+        doc.css("p.price strong")  
         Racquet.new(brand[:name], model[:name], type, price)
       end
     end
