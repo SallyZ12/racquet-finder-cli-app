@@ -16,32 +16,39 @@ class RacquetFinder::Racquet
     @name = name
     @url = url
     @model = model
+    @model_url = model_url
 
   end
-
-
-
 
     def scrape_brands
       doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
 
-      doc.css("ul.subcat li a").each do |brand|
+        doc.css("ul.subcat li a").each do |brand|
 
-        b={}
-        b[:name]=brand.text.gsub("\r","").gsub(" Racquets","")
-        b[:url]=brand.attr("href").gsub("\r","").gsub(" //","")
-        b[:models]=[]
-        @@BRANDS<<b
+          b={}
+          b[:name]=brand.text.gsub("\r","").gsub(" Racquets","")
+          b[:url]=brand.attr("href").gsub("\r","").gsub(" //","")
+          b[:models]=[]
+          @@BRANDS<<b
         end
     end
 
 
     #Enoch Code
     def scrape_models
-      self.brands.each do |brand|
-        doc = Nokogiri::HTML(open(brand[:model_url]))
-        doc.somecss.each do |model|
-          Racquet.models.push(some css)
+        self.scrape_brands
+
+          @@BRANDS.each do |brand|
+            binding.pry
+            # self.brands.each do |brand|
+            # doc = Nokogiri::HTML(open(brand[:url]))
+            doc = Nokogiri::HTML(open("http://www.midwestsports.com/head-tennis-racquets/c/104/"))
+            doc.css("ul.subcat li a").each do |model|
+            model.text.gsub("\r","").gsub(" Racquets","").gsub("Head Graphene","").gsub("Tennis","")
+            model.attr("href").gsub("\r","").gsub(" //","")
+        # doc.somecss.each do |model|
+
+          # Racquet.models.push(some css)
     end
   end
 end
