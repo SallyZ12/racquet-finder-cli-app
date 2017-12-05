@@ -24,15 +24,25 @@ class RacquetFinder::Scraper
           m = {}
           doc.css("ul.subcat li a").each do |model|
           m[:model_name] = model.text.gsub("\r","").gsub(" Racquets","").gsub("Tennis","").gsub(" ","")
-          m[:model_url]= model.attr("href").gsub("\r","").gsub("//","http://")
-            binding.pry
+          # m[:model_url]= model.attr("href").gsub("\r","").gsub("//","http://")
+
           brand[:models]<<m
 
-          r=[]
+          r = {}
+          doc.css("li.grid-prod-wrap h3 a").each do |raq|
+            r[:type] = raq.children.text.gsub("\r","")
 
+
+          doc.css("p.price strong").each do |pr|
+            r[:price] =  pr.children.text.gsub("\r","")
+
+            binding.pry
+
+          end
         end
       end
     end
+  end
 
 end
 #Enoch Code
