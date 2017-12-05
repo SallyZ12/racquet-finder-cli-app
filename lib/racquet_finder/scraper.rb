@@ -24,23 +24,23 @@ class RacquetFinder::Scraper
           m = {}
           doc.css("ul.subcat li a").each do |model|
           m[:model_name] = model.text.gsub("\r","").gsub(" Racquets","").gsub("Tennis","").gsub(" ","")
-          m[:model_url]= model.attr("href").gsub("\r","").gsub("//","http://")
+          # m[:model_url]= model.attr("href").gsub("\r","").gsub("//","http://")
           brand[:models]<<m
 
 
-          # r = {}
-          # doc.css("li.grid-prod-wrap h3 a").each do |raq|
-          #   r[:name] = raq.children.text.gsub("\r","").gsub("Tennis", "").gsub("Racquet", "")
-          #
-          #
-          # doc.css("p.price strong").each do |pr|
-          #   r[:price] =  pr.children.text.gsub("\r","")
-          #
-          # m[:racquet] = []
-          # m[:racquet]<<r
-          # binding.pry
-          # end
-        # end
+          r = {}
+          doc.css("li.grid-prod-wrap h3 a").each do |raq|
+            r[:name] = raq.children.text.gsub("\r","").gsub("Tennis", "").gsub("Racquet", "")
+
+
+          doc.css("p.price strong").each do |pr|
+            r[:price] =  pr.children.text.gsub("\r","").gsub("                ","")
+
+          m[:racquet] = []
+          m[:racquet]<<r
+
+          end
+        end
       end
     end
   end
@@ -52,9 +52,11 @@ end
 
 
 
-#Enoch Code
+#code if want to have a separate method to scrape racquet specific data
 def scrape_racquets
-  self.scrape_models
+
+  self.scrape_brands
+
     RacquetFinder::Racquet.brands.each do |brand|
       brand[:models].each do |model|
       # brand[:name] # the name of the brand
@@ -67,6 +69,7 @@ def scrape_racquets
 
       doc.css("p.price strong").each do |pr|
         r[:price] =  pr.children.text.gsub("\r","")
+        binding.pry
 
       m[:racquet] = []
       m[:racquet]<<r
@@ -78,10 +81,7 @@ def scrape_racquets
 end
 
 
-        end
-      end
-    end
-end
+        # code for individual racquet name and price
           # r = {}
           # doc.css("li.grid-prod-wrap h3 a").each do |raq|
           #   r[:name] = raq.children.text.gsub("\r","").gsub("Tennis", "").gsub("Racquet", "")
