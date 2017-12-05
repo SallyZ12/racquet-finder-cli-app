@@ -19,7 +19,6 @@ class RacquetFinder::Scraper
       self.scrape_brands
         RacquetFinder::Racquet.brands.each do |brand|
           doc = Nokogiri::HTML(open(brand[:url]))
-          # doc = Nokogiri::HTML(open("http://www.midwestsports.com/babolat-tennis-racquets/c/101/"))
 
           m = {}
           doc.css("ul.subcat li a").each do |model|
@@ -52,7 +51,7 @@ end
 
 
 
-#code if want to have a separate method to scrape racquet specific data
+#code for racquet_name and price(included in scrape models--not working)
 def scrape_racquets
 
   self.scrape_brands
