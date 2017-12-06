@@ -14,38 +14,43 @@ class RacquetFinder::Scraper
       end
   end
 
-  #Enoch Code
-  def scrape_models
+
+  def scrape_racquets
       self.scrape_brands
         RacquetFinder::Racquet.brands.each do |brand|
           doc = Nokogiri::HTML(open(brand[:url]))
 
-          m = {}
-          doc.css("ul.subcat li a").each do |model|
-          m[:model_name] = model.text.gsub("\r","").gsub(" Racquets","").gsub("Tennis","").gsub(" ","")
-          # m[:model_url]= model.attr("href").gsub("\r","").gsub("//","http://")
-          brand[:models]<<m
+
+
+          racquet_type = doc.css("li.whole")
+          racquet_type.each do |r|
+
+            binding.pry
+
+          # m = {}
+          # doc.css("ul.subcat li a").each do |model|
+          # m[:model_name] = model.text.gsub("\r","").gsub(" Racquets","").gsub("Tennis","").gsub(" ","")
+          # # m[:model_url]= model.attr("href").gsub("\r","").gsub("//","http://")
+          # brand[:models]<<m
+
+          # r = {}
+          # doc.css("li.grid-prod-wrap h3 a").each do |raq|
+          #   r[:name] = raq.children.text.gsub("\r","").gsub("Tennis", "").gsub("Racquet", "")
+          #
+          # doc.css("p.price strong").each do |pr|
+          #   r[:price] =  pr.children.text.gsub("\r","").gsub("                ","")
+          #
+          # m[:racquet] = []
+          # m[:racquet]<<r
+
+
+          # binding.pry
 
 
 
-          r = {}
-          doc.css("li.grid-prod-wrap h3 a").each do |raq|
-            r[:name] = raq.children.text.gsub("\r","").gsub("Tennis", "").gsub("Racquet", "")
 
-
-          doc.css("p.price strong").each do |pr|
-            r[:price] =  pr.children.text.gsub("\r","").gsub("                ","")
-
-          m[:racquet] = []
-          m[:racquet]<<r
-
-          bindng.pry
-
-        end
-      end
     end
-  end
-
+ end
 end
 
   # RacquetFinder::Racquet.new(brand[:name], model[:model_name], raq[:racquet_name], raq[:price])
@@ -54,32 +59,32 @@ end
 
 
 #code for racquet_name and price(included in scrape models--not working)
-def scrape_racquets
-
-  self.scrape_brands
-
-    RacquetFinder::Racquet.brands.each do |brand|
-      brand[:models].each do |model|
-      # brand[:name] # the name of the brand
-      # model[:model_name] # the name of the model
-      doc = Nokogiri::HTML(open(model[:url]))
-      r = {}
-      doc.css("li.grid-prod-wrap h3 a").each do |raq|
-        r[:name] = raq.children.text.gsub("\r","").gsub("Tennis", "").gsub("Racquet", "")
-
-
-      doc.css("p.price strong").each do |pr|
-        r[:price] =  pr.children.text.gsub("\r","")
-        binding.pry
-
-      m[:racquet] = []
-      m[:racquet]<<r
-
-        end
-      end
-    end
-  end
-end
+# def scrape_racquets
+#
+#   self.scrape_brands
+#
+#     RacquetFinder::Racquet.brands.each do |brand|
+#       brand[:models].each do |model|
+#       # brand[:name] # the name of the brand
+#       # model[:model_name] # the name of the model
+#       doc = Nokogiri::HTML(open(model[:url]))
+#       r = {}
+#       doc.css("li.grid-prod-wrap h3 a").each do |raq|
+#         r[:name] = raq.children.text.gsub("\r","").gsub("Tennis", "").gsub("Racquet", "")
+#
+#
+#       doc.css("p.price strong").each do |pr|
+#         r[:price] =  pr.children.text.gsub("\r","")
+#         binding.pry
+#
+#       m[:racquet] = []
+#       m[:racquet]<<r
+#
+#         end
+#       end
+#     end
+#   end
+# end
 
 
         # code for individual racquet name and price
