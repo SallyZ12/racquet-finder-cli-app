@@ -27,6 +27,7 @@ class RacquetFinder::Scraper
           brand[:models]<<m
 
 
+
           r = {}
           doc.css("li.grid-prod-wrap h3 a").each do |raq|
             r[:name] = raq.children.text.gsub("\r","").gsub("Tennis", "").gsub("Racquet", "")
@@ -38,7 +39,8 @@ class RacquetFinder::Scraper
           m[:racquet] = []
           m[:racquet]<<r
 
-          end
+          bindng.pry
+
         end
       end
     end
