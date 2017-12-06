@@ -1,32 +1,34 @@
 class RacquetFinder::Racquet
 
-  attr_accessor :name, :url, :type, :price
+  attr_accessor :brand, :brand_url, :racquet_name, :price
 
   @@all = []
   @@BRANDS = []
 
 
-  def initialize(name, racquet_name, price)
-    @name = name
+  def initialize(brand)
+    @brand = brand
+    @brand_url = brand_url
     @raquet_name = racquet_name
     @price = price
+    @@all<<self
   end
 
-  def self.racquet_new(r)
+  def self.new_racquet(b,r)
+    # self.new(
+    # r.css("name").text
+    # )
     self.new(
-    r.css("name").text
+
+    b.text.gsub("\r","").gsub(" Racquets",""),
+
+    b.attr("href").gsub("\r","").gsub(" //","http://"),
+
+    r.css("h3 a").children.text.gsub("\r","").gsub("Tennis","").gsub("Racquet","").gsub("  ",""),
+
+
+    r.css("p.price strong").children.text.gsub("\r","").gsub("                  ","")
     )
-  end
-
-
-
-  def self.brands
-    @@BRANDS
-  end
-
-  #Enoch Code
-  def self.add_brand(name, url)
-
   end
 
 
@@ -34,6 +36,10 @@ class RacquetFinder::Racquet
   @@all
   end
 
+
+  def self.brands
+    @@BRANDS
+  end
 
 
 end
