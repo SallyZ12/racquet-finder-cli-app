@@ -33,9 +33,6 @@ class RacquetFinder::Scraper
           brand[:racquets]<<dollars
             binding.pry
 
-
-
-
           end
        end
       end
