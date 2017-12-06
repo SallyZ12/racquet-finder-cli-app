@@ -9,7 +9,7 @@ class RacquetFinder::Scraper
         b={}
         b[:name]=brand.text.gsub("\r","").gsub(" Racquets","")
         b[:url]=brand.attr("href").gsub("\r","").gsub(" //","http://")
-        b[:models]=[]
+        b[:racquets]=[]
         RacquetFinder::Racquet.brands<<b
       end
   end
@@ -21,11 +21,26 @@ class RacquetFinder::Scraper
           doc = Nokogiri::HTML(open(brand[:url]))
 
 
-
+          raq=[]
+          dollars=[]
           racquet_type = doc.css("li.whole")
           racquet_type.each do |r|
+          raq << r.css("h3 a").children.text.gsub("\r","").gsub("Tennis","").gsub("Racquet","").gsub("  ","")
+          dollars << r.css("p.price strong").children.text.gsub("\r","").gsub("                  ","")
 
+
+          brand[:racquets]<<raq
+          brand[:racquets]<<dollars
             binding.pry
+
+
+
+
+          end
+       end
+      end
+
+end
 
           # m = {}
           # doc.css("ul.subcat li a").each do |model|
@@ -49,9 +64,7 @@ class RacquetFinder::Scraper
 
 
 
-    end
- end
-end
+
 
   # RacquetFinder::Racquet.new(brand[:name], model[:model_name], raq[:racquet_name], raq[:price])
 

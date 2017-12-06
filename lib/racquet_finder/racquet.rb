@@ -16,7 +16,7 @@ class RacquetFinder::Racquet
     self.new(
     r.css("name").text
     )
-
+  end
 
 
 
