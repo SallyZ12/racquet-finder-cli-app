@@ -10,10 +10,8 @@ class RacquetFinder::Scraper
           # binding.pry
         RacquetFinder::Brand.new_brand(b)
 
-
         end
       end
-
 
 
   def scrape_racquets(user_brand)
