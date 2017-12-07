@@ -7,10 +7,10 @@ class RacquetFinder::Scraper
         brand_name = doc.css("ul.subcat li a")
         brand_name.each do |b|
 
-
+          # binding.pry
         RacquetFinder::Brand.new_brand(b)
 
-        binding.pry
+
         end
       end
 
