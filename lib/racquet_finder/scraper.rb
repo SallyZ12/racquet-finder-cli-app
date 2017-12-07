@@ -1,27 +1,34 @@
 class RacquetFinder::Scraper
 
 
-  def scrape_brands
+  def self.scrape_brands
     doc = Nokogiri::HTML(open("http://www.midwestsports.com"))
+
 
         brand_name = doc.css("ul.subcat li a")
         brand_name.each do |b|
 
           binding.pry
+            RacquetFinder::Brand.new_brand(b)
+        end
+      end
         # doc.css("ul.subcat li a").each do |brand|
         # b={}
-
+        #
+        # b[:brand]=brand.text.gsub("\r","").gsub(" Racquets","")
+        #
         # b[:url]=brand.attr("href").gsub("\r","").gsub(" //","http://")
         # b[:racquets]=[]
+        # binding.pry
+        #
         # RacquetFinder::Racquet.brands<<b
-      end
-  end
 
 
-  def scrape_racquets
-      self.scrape_brands
-        RacquetFinder::Racquet.brands.each do |brand|
-          doc = Nokogiri::HTML(open(brand[:url]))
+
+
+  def scrape_racquets(user_brand)
+    binding.pry
+          doc = Nokogiri::HTML(open(user_brand.brand_url))
 
 
           racquet_type = doc.css("li.whole")
@@ -29,11 +36,11 @@ class RacquetFinder::Scraper
 
             binding.pry
 
-            RacquetFinder::Racquet.new_racquet(b,r)
+            RacquetFinder::Racquet.new_racquet(r)
 
           end
-       end
-      end
+        end
+
 
 end
 
