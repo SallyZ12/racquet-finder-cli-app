@@ -30,7 +30,7 @@ class RacquetFinder::CLI
               puts "Thanks enjoy your racquet!"
             end
           end
-        
+
 
 
           def list_brands
@@ -42,7 +42,7 @@ class RacquetFinder::CLI
         end
 
         def list_racquets(user_brand)
-          RacquetFinder::Scrape.scrape_racquets(user_brand)
+          RacquetFinder::Scraper.scrape_racquets(user_brand)
         end
 
 
