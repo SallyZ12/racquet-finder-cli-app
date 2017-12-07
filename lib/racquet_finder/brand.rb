@@ -10,7 +10,6 @@ class RaquetFinder::Brand
     @@BRANDS<<self
   end
 
-
   def self.new_brand(b)
 
     self.new(

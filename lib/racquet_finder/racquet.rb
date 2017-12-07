@@ -4,8 +4,6 @@ class RacquetFinder::Racquet
 
   @@all = []
 
-
-
   def initialize(racquet_name, price)
     @raquet_name = racquet_name
     @price = price
@@ -28,10 +26,6 @@ class RacquetFinder::Racquet
   @@all
   end
 
-
-  def self.brands
-    @@BRANDS
-  end
 
 
 end

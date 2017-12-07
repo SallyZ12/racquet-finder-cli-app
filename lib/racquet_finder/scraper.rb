@@ -15,7 +15,7 @@ class RacquetFinder::Scraper
 
 
   def scrape_racquets(user_brand)
-    binding.pry
+    
           doc = Nokogiri::HTML(open(user_brand.brand_url))
 
 
