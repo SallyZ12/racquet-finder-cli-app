@@ -19,8 +19,6 @@ class RacquetFinder::CLI
         list_racquets(user_brand)
 
 
-
-
         puts "Would you like to select another racquet? Enter Y or N"
 
           input = gets.strip.downcase

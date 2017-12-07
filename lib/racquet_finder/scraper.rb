@@ -7,7 +7,7 @@ class RacquetFinder::Scraper
         brand_name = doc.css("ul.subcat li a")
         brand_name.each do |b|
 
-          # binding.pry
+          binding.pry
         RacquetFinder::Brand.new_brand(b)
 
         end
@@ -16,7 +16,7 @@ class RacquetFinder::Scraper
 
   def scrape_racquets(user_brand)
 
-          doc = Nokogiri::HTML(open(user_brand.brand_url))
+          doc = Nokogiri::HTML(open(RacquetFinder::CLI.user_brand.brand_url))
 
           racquet_type = doc.css("li.whole")
           racquet_type.each do |r|
