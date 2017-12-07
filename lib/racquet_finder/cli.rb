@@ -30,12 +30,13 @@ class RacquetFinder::CLI
               puts "Thanks enjoy your racquet!"
             end
           end
+        
 
 
           def list_brands
             puts "Racquet Brands"
 
-          RaquetFinder::Brand.all_brands[0..2].each.with_index(1) do |brand, i|
+          RacquetFinder::Brand.all_brands[0..2].each.with_index(1) do |brand, i|
             puts "#{i}. #{brand}"
           end
         end
@@ -43,9 +44,6 @@ class RacquetFinder::CLI
         def list_racquets(user_brand)
           RacquetFinder::Scrape.scrape_racquets(user_brand)
         end
-
-
-
 
 
 

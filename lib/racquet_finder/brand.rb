@@ -1,4 +1,4 @@
-class RaquetFinder::Brand
+class RacquetFinder::Brand
 
   attr_accessor :brand, :brand_url
 

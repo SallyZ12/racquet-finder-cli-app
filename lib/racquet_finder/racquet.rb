@@ -5,7 +5,7 @@ class RacquetFinder::Racquet
   @@all = []
 
   def initialize(racquet_name, price)
-    @raquet_name = racquet_name
+    @racquet_name = racquet_name
     @price = price
     @@all<<self
   end
