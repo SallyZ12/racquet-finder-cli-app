@@ -28,7 +28,7 @@ class RacquetFinder::CLI
 
         puts "You Have Selected:"
 
-        list_racquets(user_brand)[input]
+        list_racquet(input)
 
         puts ""
         puts ""
@@ -60,8 +60,6 @@ class RacquetFinder::CLI
             puts "#{i}. #{name.racquet_name} -- #{name.price}"
           end
       end
-
-
 
 
 
