@@ -20,6 +20,14 @@ class RacquetFinder::CLI
         list_racquets(user_brand)
 
 
+        # puts ""
+        # puts "Please select a Racquet"
+        #
+        # input = gets.strip.to_i
+        # puts ""
+        #
+        # list_racquets(user_brand)[input]
+
         puts "Would you like to select another racquet? Enter Y or N"
 
           input = gets.strip.downcase
@@ -43,14 +51,10 @@ class RacquetFinder::CLI
       def list_racquets(user_brand)
           r = RacquetFinder::Scraper.scrape_racquets(user_brand)
 
-          RacquetFinder::Racquet.all.each.with_index(1) do |name, i|
+          RacquetFinder::Racquet.all[0..5].each.with_index(1) do |name, i|
             puts "#{i}. #{name.racquet_name} -- #{name.price}"
           end
-
-
       end
-
-
 
 
 end
