@@ -13,7 +13,7 @@ class RacquetFinder::CLI
         list_brands
         puts ""
         puts ""
-        input = gets.strip
+        input = gets.strip.to_i
 
 
         user_brand = RacquetFinder::Brand.find_brand(input)
@@ -43,6 +43,9 @@ class RacquetFinder::CLI
 
       def list_racquets(user_brand)
           RacquetFinder::Scraper.scrape_racquets(user_brand)
+          # RacquetFinder::Scraper.scrape_racquets(user_brand).each.with_index(1) do |name, i|
+          #   puts "#{i}. #{name}"
+          # end
       end
 
 
