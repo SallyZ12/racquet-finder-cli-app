@@ -7,7 +7,7 @@ class RacquetFinder::CLI
 
     def start
         puts ""
-        puts "To select a Racquet start by selecting the Brand by Number"
+        puts "To select available Racquets by Brand, start by selecting the Brand by Number"
         puts ""
         list_brands
         puts ""
@@ -17,17 +17,21 @@ class RacquetFinder::CLI
 
         user_brand = RacquetFinder::Brand.find_brand(input)
 
+        puts "Available Racquets:"
+        puts ""
         list_racquets(user_brand)
 
+        puts ""
+        puts "Enter the Number of the Racquet you wish to select:"
+          input = gets.strip.to_i
+        puts ""
 
-        # puts ""
-        # puts "Please select a Racquet"
-        #
-        # input = gets.strip.to_i
-        # puts ""
-        #
-        # list_racquets(user_brand)[input]
+        puts "You Have Selected:"
 
+        #need code here 
+
+        puts ""
+        puts ""
         puts "Would you like to select another racquet? Enter Y or N"
 
           input = gets.strip.downcase
@@ -48,6 +52,7 @@ class RacquetFinder::CLI
         end
       end
 
+
       def list_racquets(user_brand)
           r = RacquetFinder::Scraper.scrape_racquets(user_brand)
 
@@ -55,6 +60,9 @@ class RacquetFinder::CLI
             puts "#{i}. #{name.racquet_name} -- #{name.price}"
           end
       end
+
+
+
 
 
 end
