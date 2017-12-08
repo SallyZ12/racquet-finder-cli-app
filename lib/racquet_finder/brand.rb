@@ -27,7 +27,7 @@ class RacquetFinder::Brand
 
 
   def self.find_brand(input)
-    self.all_brands[input]
+    self.all_brands[input-1]
   end
 
 end

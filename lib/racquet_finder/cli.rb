@@ -26,7 +26,7 @@ class RacquetFinder::CLI
             if input == "y"
                 start
             else
-              puts "Thanks enjoy your racquet!"
+              puts "Thanks enjoy your Racquet!"
             end
           end
 
@@ -36,15 +36,18 @@ class RacquetFinder::CLI
           puts "Racquet Brands"
 
       RacquetFinder::Brand.all_brands[0..2].each.with_index(1) do |brand, i|
-          puts "#{i}. #{brand}"
+          puts "#{i}. #{brand.brand}"
         end
       end
 
       def list_racquets(user_brand)
-          RacquetFinder::Scraper.scrape_racquets(user_brand)
-          # RacquetFinder::Scraper.scrape_racquets(user_brand).each.with_index(1) do |name, i|
-          #   puts "#{i}. #{name}"
-          # end
+          r = RacquetFinder::Scraper.scrape_racquets(user_brand)
+
+          RacquetFinder::Racquet.all.each.with_index(1) do |name, i|
+            puts "#{i}. #{name.racquet_name} -- #{name.price}"
+          end
+
+
       end
 
 
