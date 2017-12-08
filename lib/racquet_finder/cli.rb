@@ -28,7 +28,7 @@ class RacquetFinder::CLI
 
         puts "You Have Selected:"
 
-        #need code here 
+        list_racquets(user_brand)[input]
 
         puts ""
         puts ""
