@@ -21,7 +21,7 @@ class RacquetFinder::Brand
 
   end
 
-  def all_brands
+  def self.all_brands
     @@BRANDS
   end
 

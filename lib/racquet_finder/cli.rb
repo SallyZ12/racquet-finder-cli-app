@@ -6,6 +6,8 @@ class RacquetFinder::CLI
     end
 
     def start
+        puts ""
+        puts ""
         puts "To select a Racquet start by selecting the Brand by Number"
         puts ""
         list_brands
@@ -31,17 +33,17 @@ class RacquetFinder::CLI
 
 
 
-          def list_brands
-            puts "Racquet Brands"
+      def list_brands
+          puts "Racquet Brands"
 
-          RacquetFinder::Brand.all_brands[0..2].each.with_index(1) do |brand, i|
-            puts "#{i}. #{brand}"
-          end
+      RacquetFinder::Brand.all_brands[0..2].each.with_index(1) do |brand, i|
+          puts "#{i}. #{brand}"
         end
+      end
 
-        def list_racquets(user_brand)
+      def list_racquets(user_brand)
           RacquetFinder::Scraper.scrape_racquets(user_brand)
-        end
+      end
 
 
 
