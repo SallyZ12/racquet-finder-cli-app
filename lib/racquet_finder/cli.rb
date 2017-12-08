@@ -7,7 +7,6 @@ class RacquetFinder::CLI
 
     def start
         puts ""
-        puts ""
         puts "To select a Racquet start by selecting the Brand by Number"
         puts ""
         list_brands
