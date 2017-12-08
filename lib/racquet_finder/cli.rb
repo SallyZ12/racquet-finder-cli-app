@@ -33,6 +33,7 @@ class RacquetFinder::CLI
 
         puts "You Have Selected:"
 
+        #need to build this method
         list_racquet(input)
 
         puts ""
@@ -52,7 +53,7 @@ class RacquetFinder::CLI
       def list_brands
           puts "Racquet Brands"
 
-      RacquetFinder::Brand.all_brands[0..2].each.with_index(1) do |brand, i|
+      RacquetFinder::Brand.all_brands[0..3].each.with_index(1) do |brand, i|
           puts "#{i}. #{brand.brand}"
         end
       end
@@ -64,6 +65,10 @@ class RacquetFinder::CLI
           RacquetFinder::Racquet.all[0..5].each.with_index(1) do |name, i|
             puts "#{i}. #{name.racquet_name} -- #{name.price}"
           end
+      end
+
+
+      def list_racquet(input)
       end
 
 
