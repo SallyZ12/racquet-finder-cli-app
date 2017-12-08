@@ -22,13 +22,18 @@ class RacquetFinder::CLI
         list_racquets(user_brand)
 
         puts ""
-        puts "Enter the Number of the Racquet you wish to select:"
+
+
+        puts "Enter the Number of the Racquet you wish to buy:"
+
           input = gets.strip.to_i
+
+
         puts ""
 
         puts "You Have Selected:"
 
-    
+        list_racquet(input)
 
         puts ""
         puts ""
@@ -60,8 +65,6 @@ class RacquetFinder::CLI
             puts "#{i}. #{name.racquet_name} -- #{name.price}"
           end
       end
-
-
 
 
 end
