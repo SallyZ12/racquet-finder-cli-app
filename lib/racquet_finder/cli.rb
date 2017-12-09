@@ -4,10 +4,10 @@ class RacquetFinder::CLI
 
       RacquetFinder::Scraper.scrape_brands
       puts "Welcome to the World of Tennis Racquets"
-      start
+      menu
     end
 
-    def start
+    def  menu
         puts ""
         puts "To select available Racquets by Brand, start by selecting the Brand by Number"
         puts ""
@@ -19,6 +19,8 @@ class RacquetFinder::CLI
         puts ""
 
         user_brand = RacquetFinder::Brand.find_brand(input)
+
+
 
         puts "Available Racquets:"
         puts ""
@@ -42,13 +44,13 @@ class RacquetFinder::CLI
           input = gets.strip.downcase
             if input == "y"
               RacquetFinder::Racquet.clear_all
-                start
+                menu
             else
               puts ""
               puts "Thanks enjoy your Racquet!"
             end
           end
-
+        end
 
 
       def list_brands
@@ -68,10 +70,7 @@ class RacquetFinder::CLI
           end
       end
 
-    def list_racquet(input)
-    racquet = RacquetFinder::Racquet.find_racquet(input)
-    puts "#{racquet.racquet_name} -- #{racquet.price}"
-  end
-
-
-end
+      def list_racquet(input)
+        racquet = RacquetFinder::Racquet.find_racquet(input)
+        puts "#{racquet.racquet_name} -- #{racquet.price}"
+      end
