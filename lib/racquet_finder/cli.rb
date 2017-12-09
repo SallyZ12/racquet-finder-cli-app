@@ -37,7 +37,6 @@ class RacquetFinder::CLI
         list_racquet(input)
 
         puts ""
-        puts ""
         puts "Would you like to select another racquet? Enter Y or N"
 
           input = gets.strip.downcase
