@@ -22,7 +22,7 @@ class RacquetFinder::Brand
   end
 
   def self.all_brands
-    @@BRANDS
+    @@BRANDS[0..3]
   end
 
 

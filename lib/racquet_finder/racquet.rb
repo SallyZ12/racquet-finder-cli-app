@@ -23,7 +23,15 @@ class RacquetFinder::Racquet
 
 
   def self.all
-  @@all
+  @@all[0..4]
+  end
+
+  def self.find_racquet(input)
+    self.all[input-1]
+  end
+
+  def self.clear_all
+    @@all.clear
   end
 
 
