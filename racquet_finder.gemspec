@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["'szasloff@gmail.com'"]
 
   spec.summary       = "Find Tennis Racquets on MidWest Sports"
-  spec.description   = "Select Tennis Racquet Brand and Model with Price"
+  spec.description   = "Select a Tennis Racquet Brand and then from that Brand select a Racquet with its current Price"
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
