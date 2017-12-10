@@ -5,7 +5,6 @@ class RacquetFinder::CLI
       RacquetFinder::Scraper.scrape_brands
       puts "Welcome to the World of Tennis Racquets"
       menu
-      options
     end
 
 
@@ -39,7 +38,10 @@ class RacquetFinder::CLI
           puts ""
           list_racquet(input)
           puts ""
+          options
         end
+
+
 
     def options
       puts "Would you like to select another racquet? Enter Y or N"
