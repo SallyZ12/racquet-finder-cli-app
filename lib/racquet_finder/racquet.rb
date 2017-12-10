@@ -16,7 +16,7 @@ class RacquetFinder::Racquet
 
     r.css("h3 a").children.text.gsub("\r","").gsub("Tennis","").gsub("Racquet","").gsub("  ",""),
 
-    r.css("p.price strong").children.text.gsub("\r","").gsub("                ","").split("").join("")
+    r.css("p.price strong").children.text.gsub("\r","").split(" ").join(" ")
     )
   end
 
