@@ -60,13 +60,13 @@ class RacquetFinder::CLI
           puts "Racquet Brands"
 
       RacquetFinder::Brand.all_brands.each.with_index(1) do |brand, i|
-          puts "#{i}. #{brand.brand}"
+          puts "#{i}. #{brand.brand_name}"
         end
       end
 
       def list_brand(input)
         brand = RacquetFinder::Brand.find_brand(input)
-        puts "#{brand.brand}"
+        puts "#{brand.brand_name}"
       end
 
 

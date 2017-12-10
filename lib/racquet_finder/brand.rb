@@ -1,11 +1,11 @@
 class RacquetFinder::Brand
 
-  attr_accessor :brand, :brand_url
+  attr_accessor :brand_name, :brand_url
 
   @@BRANDS = []
 
-  def initialize(brand, brand_url)
-    @brand = brand
+  def initialize(brand_name, brand_url)
+    @brand_name = brand_name
     @brand_url = brand_url
     @@BRANDS<<self
   end
