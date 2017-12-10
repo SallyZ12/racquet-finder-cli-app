@@ -38,6 +38,8 @@ class RacquetFinder::CLI
           puts ""
           list_racquet(input)
           puts ""
+          puts "Nice choice -- you are a Champion!"
+          puts ""
           options
         end
 

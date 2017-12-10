@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "racquet_finder/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "racquet-finder-cli-app"
+  spec.name          = "racquet_finder"
   spec.version       = RacquetFinder::VERSION
   spec.authors       = ["'Sally Zasloff'"]
   spec.email         = ["'szasloff@gmail.com'"]
