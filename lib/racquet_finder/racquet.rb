@@ -19,7 +19,7 @@ class RacquetFinder::Racquet
 
 
   def self.all
-  @@all[0..7]
+  @@all[0..5]
   end
 
 
