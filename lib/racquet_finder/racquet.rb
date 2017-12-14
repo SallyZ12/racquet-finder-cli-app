@@ -10,12 +10,6 @@ class RacquetFinder::Racquet
     @@all<<self
   end
 
-  def self.new_racquet(r)
-    self.new(
-    r.css("h3 a").children.text.gsub("\r","").gsub("Tennis","").gsub("Racquet","").gsub("  ",""),
-    r.css("p.price strong").children.text.gsub("\r","").split(" ").join(" ")
-    )
-  end
 
 
   def self.all

@@ -11,36 +11,39 @@ class RacquetFinder::CLI
     def menu
       puts ""
          puts "To select available Racquets by Brand, start by selecting the Brand by Number"
-         puts ""
 
          list_brands
-         puts ""
          input = gets.strip.to_i
          puts ""
+         if input.between?(1,4)
+             puts ""
+             user_brand = RacquetFinder::Brand.find_brand(input)
 
-         user_brand = RacquetFinder::Brand.find_brand(input)
+             puts " You have selected the Brand:"
+             puts""
+             list_brand(input)
+             puts ""
 
-         puts " You have selected the Brand:"
-         puts""
-         list_brand(input)
-         puts ""
+            puts "Available Racquets:"
+            puts ""
+            list_racquets(user_brand)
+            puts ""
 
-         puts "Available Racquets:"
-          puts ""
-          list_racquets(user_brand)
-          puts ""
+            puts "Enter the Number of the Racquet you wish to buy:"
+            input = gets.strip.to_i
 
-          puts "Enter the Number of the Racquet you wish to buy:"
-          input = gets.strip.to_i
-
-          puts ""
-          puts "You Have Selected:"
-          puts ""
-          list_racquet(input)
-          puts ""
-          puts "Nice choice -- you are a Champion!"
-          puts ""
-          options
+            puts ""
+            puts "You Have Selected:"
+            puts ""
+            list_racquet(input)
+            puts ""
+            puts "Nice choice -- you are a Champion!"
+            puts ""
+            options
+          else
+            puts "Incorrect Entry -- Select Again"
+            menu
+          end
         end
 
 
@@ -76,7 +79,6 @@ class RacquetFinder::CLI
 
       def list_racquets(user_brand)
           r = RacquetFinder::Scraper.scrape_racquets(user_brand)
-
           RacquetFinder::Racquet.all.each.with_index(1) do |name, i|
             puts "#{i}. #{name.racquet_name} -- #{name.price}"
           end
