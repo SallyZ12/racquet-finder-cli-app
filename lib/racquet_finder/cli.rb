@@ -33,6 +33,7 @@ class RacquetFinder::CLI
             input = gets.strip.to_i
 
             puts ""
+            if input.between?(1,6)
             puts "You Have Selected:"
             puts ""
             list_racquet(input)
@@ -45,6 +46,9 @@ class RacquetFinder::CLI
             menu
           end
         end
+      end
+
+
 
 
 
